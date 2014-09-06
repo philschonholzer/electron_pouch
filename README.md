@@ -1,4 +1,12 @@
-# atom-shell example app
+# atom-shell example app with PouchDB
+
+This is a fork of the original [Atom Shell Hello World app](https://github.com/dougnukem/hello-atom) designed to show you how to integrate Atom Shell with PouchDB.
+
+It uses npm to install PouchDB, but then relies on the browser version of PouchDB so that the app can use IndexedDB under the hood.
+
+![screenshot](screenshot.png)
+
+## atom-shell example app
 
 This is an example atom-shell app based off these instructions:
 - https://github.com/atom/atom-shell/blob/master/docs/tutorial/quick-start.md
