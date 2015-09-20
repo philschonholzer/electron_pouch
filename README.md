@@ -2,11 +2,7 @@
 
 This is a demo app that integrates PouchDB with Electron.
 
-It shows how to use any of the following PouchDB adapters:
-
-* IndexedDB
-* WebSQL
-* LevelDB
+It shows how to use any of the following PouchDB adapters: IndexedDB and WebSQL (browser-style) or LevelDB (Node-style).
 
 The app looks like this:
 
