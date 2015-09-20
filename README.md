@@ -1,38 +1,36 @@
-# atom-shell example app with PouchDB
+# Hello PouchDB with Electron
 
-This is a fork of the original [Atom Shell Hello World app](https://github.com/dougnukem/hello-atom) designed to show you how to integrate Atom Shell with PouchDB.
+This is a demo app that integrates PouchDB with Electron.
 
-It uses npm to install PouchDB, but then relies on the browser version of PouchDB so that the app can use IndexedDB under the hood.
+It shows how to use any of the following PouchDB adapters:
+
+* IndexedDB
+* WebSQL
+* LevelDB
+
+The app looks like this:
 
 ![screenshot](screenshot.png)
 
-## atom-shell example app
+## Install and run
 
-This is an example atom-shell app based off these instructions:
-- https://github.com/atom/atom-shell/blob/master/docs/tutorial/quick-start.md
+Check out the code:
 
-To run you should be able to do the following:
+    git clone https://github.com/nolanlawson/hello-electron-with-pouchdb
+    cd hello-electron-with-pouchdb
 
-`./run.sh`
+Then npm install:
 
-OR manually:
+    npm install
 
-Install grunt if you haven't already
+And run:
 
-```
-npm install -g grunt-cli
-```
+    npm start
 
-Then run the following to download version 0.12.2 of atom-shell
-```
-cd ./build
-npm install
-grunt download-atom-shell
-```
+If it doesn't work, you might not have the latest version of Node/npm. Try installing the latest using [nvm](https://github.com/creationix/nvm).
 
-Then you should be able to run the app:
+## Browser vs Node
 
-```
-./build/atom-shell/Atom.app/Contents/MacOS/Atom ./hello-app
-```
+In order to get LevelDB to work properly, this app uses a `postinstall` script that rebuilds the LevelDB C++ dependencies for Electron.
 
+If this step doesn't work for you (e.g. because you are using an older version of Node, you're using Windows, etc.), you can remove the `postinstall` script from `package.json` and just use the browser adapters (IndexedDB/WebSQL) rather than the Node.js adapter (LevelDB).

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PouchDB &#9829; Electron</title>
+  </head>
+  <body>
+    <script src="./node_modules/pouchdb/dist/pouchdb.js"></script>
+    <h1>PouchDB &#9829; Electron</h1>
+    We are using
+    <ul>
+      <li>Node.js <script>document.write(process.version)</script></li>
+      <li>Electron <script>document.write(process.versions.electron)</script></li>
+      <li>PouchDB <script>document.write(PouchDB.version)</script></li>
+    </ul>
+
+    <div id="output"></div>
+
+    <script>
+      var output = document.getElementById('output');
+
+      // IndexedDB
+
+      var db = new PouchDB('mydb-idb');
+
+      if (db.adapter === 'idb') {
+        output.innerHTML += '<br/>&#10004; We can use PouchDB with IndexedDB!';
+      }
+
+      // WebSQL
+
+      var websqlDB = new PouchDB('mydb-websql', {adapter: 'websql'});
+
+      if (websqlDB.adapter === 'websql') {
+        output.innerHTML += '<br/>&#10004; We can use PouchDB with WebSQL!';
+      }
+
+      // LevelDB
+
+      var PouchDBWithLevelDB = require('pouchdb');
+
+      var leveldbDB = new PouchDBWithLevelDB('mydb-leveldb');
+
+      if (leveldbDB.adapter === 'leveldb') {
+        output.innerHTML += '<br/>&#10004; We can use PouchDB with LevelDB!';
+      }
+    </script>
+  </body>
+</html>
