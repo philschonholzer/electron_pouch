@@ -1,4 +1,4 @@
-# Hello PouchDB with Electron
+# Hello Electron with Pouchdb
 
 This is a demo app that integrates PouchDB with Electron.
 
