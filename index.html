@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>PouchDB &#9829; Electron</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <script src="./node_modules/pouchdb/dist/pouchdb.js"></script>
-    <h1>PouchDB &#9829; Electron</h1>
-    We are using
+    <h1>PouchDB &#9829; Electron</h1> We are using
     <ul>
-      <li>Node.js <script>document.write(process.version)</script></li>
-      <li>Electron <script>document.write(process.versions.electron)</script></li>
-      <li>PouchDB <script>document.write(PouchDB.version)</script></li>
+        <li>Node.js
+            <script>
+                document.write(process.version)
+            </script>
+        </li>
+        <li>Electron
+            <script>
+                document.write(process.versions.electron)
+            </script>
+        </li>
+        <li>PouchDB
+            <script>
+                document.write(PouchDB.version)
+            </script>
+        </li>
     </ul>
 
     <div id="output"></div>
 
     <script>
-      var output = document.getElementById('output');
+        var output = document.getElementById('output');
 
       // IndexedDB
 
@@ -25,6 +38,17 @@
       if (db.adapter === 'idb') {
         output.innerHTML += '<br/>&#10004; We can use PouchDB with IndexedDB!';
       }
+      
+      var remote = new PouchDB('http://127.0.0.1:5984/test_sync');
+
+      db.post({
+          name: 'Peter',
+          age: 17
+      }).then(function (response) {
+            db.sync(remote).on('complete', function (info) {
+                console.log("Synced!");
+            });
+      });
 
       // WebSQL
 
@@ -44,5 +68,6 @@
         output.innerHTML += '<br/>&#10004; We can use PouchDB with LevelDB!';
       }
     </script>
-  </body>
+</body>
+
 </html>
