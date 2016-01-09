@@ -33,22 +33,22 @@
 
       // IndexedDB
 
-      var db = new PouchDB('mydb-idb');
+    //   var db = new PouchDB('mydb-idb');
 
-      if (db.adapter === 'idb') {
-        output.innerHTML += '<br/>&#10004; We can use PouchDB with IndexedDB!';
-      }
+    //   if (db.adapter === 'idb') {
+    //     output.innerHTML += '<br/>&#10004; We can use PouchDB with IndexedDB!';
+    //   }
       
-      var remote = new PouchDB('http://127.0.0.1:5984/test_sync');
+    //   var remote = new PouchDB('http://127.0.0.1:5984/test_sync');
 
-      db.post({
-          name: 'Peter',
-          age: 17
-      }).then(function (response) {
-            db.sync(remote).on('complete', function (info) {
-                console.log("Synced!");
-            });
-      });
+    //   db.post({
+    //       name: 'Peter',
+    //       age: 17
+    //   }).then(function (response) {
+    //         db.sync(remote).on('complete', function (info) {
+    //             console.log("Synced!");
+    //         });
+    //   });
 
       // WebSQL
 
